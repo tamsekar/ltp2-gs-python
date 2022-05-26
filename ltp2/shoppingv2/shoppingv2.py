@@ -1,6 +1,6 @@
 
 import sales.shopping_cart,sales.shopping_order
-
+from tkinter import *
 
 cart = sales.shopping_cart.Cart()
 order = sales.shopping_order.Order()
@@ -11,11 +11,14 @@ while not order.quit:
     order = sales.shopping_order.Order()
     order.get_input()
 
+def print_cart_items():
+    cart_message = "Items in your Cart.."
+    print(cart_message)
+    print('-' * len(cart_message))
+    print("{:<10} {:<10}".format('Items', 'Quantity'))
+    
+    for key in cart._contents:
+        items,quantity = key,cart._contents[key]
+        print("{:<10} {:<10}".format(items,quantity))
 
-cart_message = "Items in your Cart.."
-print(cart_message)
-print('-' * len(cart_message))
-print("{:<10} {:<10}".format('Items', 'Quantity'))
-for key in cart._contents:
-    items,quantity = key,cart._contents[key]
-    print("{:<10} {:<10}".format(items,quantity))
+print_cart_items()
